@@ -9,17 +9,33 @@ print("************************")
 
 nama_user = input("Masukkan nama kamu : ")
 
+bentuk_goa = "|_|"
+goa_kosong = [bentuk_goa] * 4
+
+goa = goa_kosong.copy()
+goa[bear_posisiton - 1] = "|0_0|"
+
 print(f'''
       Halo {nama_user}! Coba perhatikan goa dibawah ini
-      |_| |_| |_| |_| 
+      {goa_kosong}
       ''')
 
 pilihan_user = int(input("Menurut kamu di goa nomor berapa BERUANG itu berada ? [1 / 2 / 3 / 4 ]: "))
 
-if pilihan_user == bear_posisiton:
-    print(f"Selamat {nama_user} kamu menang! posisi BERUANG berada di goa nomor {bear_posisiton} dan pilihan mu adalah {pilihan_user}")
+confirm_answer = input(f"Apakah kamu yakin jawabannya adalah {pilihan_user} ? [y/n]: ")
+
+if confirm_answer == "n":
+    print("Program dihentikan!")
+    exit()
+elif confirm_answer == "y":
+    if pilihan_user == bear_posisiton:
+        print(f"{goa} \n Selamat Kamu Menang!")
+    else:
+        print(f"{goa} \n Maaf Kamu Kalah!")
 else:
-    print(f"Pilihan kamu salah! BERUANG tidak ada di posisi itu, tapi ada di nomor {bear_posisiton}, sedangkan kamu memilih nomor {pilihan_user}")
+    print("Silahkan ulangi programnya!")
+    exit()
+        
 
 
  
